@@ -8,7 +8,7 @@
 
 1. Клонируйте репозиторий:
 ```
-https://github.com/VlTsyn/DjangoPractice.git
+https://github.com/VlTsyn/DRFPractice.git
 ```
 2. Установите зависимости:
 ```
