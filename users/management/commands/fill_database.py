@@ -1,4 +1,5 @@
 from django.core.management.base import BaseCommand
+from django.utils import timezone
 from materials.models import Course, Lesson
 from users.models import Payment, User
 from datetime import datetime
@@ -90,7 +91,7 @@ class Command(BaseCommand):
         payments_data = [
             {
                 'user': user1,
-                'payment_date': datetime(2026, 5, 1, 10, 30),
+                'payment_date': timezone.make_aware(datetime(2026, 5, 1, 10, 30)),
                 'paid_course': courses[0],
                 'paid_lesson': None,
                 'amount': 15000,
@@ -98,7 +99,7 @@ class Command(BaseCommand):
             },
             {
                 'user': user2,
-                'payment_date': datetime(2026, 5, 2, 14, 15),
+                'payment_date': timezone.make_aware(datetime(2026, 5, 2, 14, 15)),
                 'paid_course': courses[1],
                 'paid_lesson': None,
                 'amount': 20000,
@@ -106,7 +107,7 @@ class Command(BaseCommand):
             },
             {
                 'user': user3,
-                'payment_date': datetime(2026, 5, 3, 9, 45),
+                'payment_date': timezone.make_aware(datetime(2026, 5, 3, 9, 45)),
                 'paid_course': courses[2],
                 'paid_lesson': None,
                 'amount': 25000,
@@ -114,7 +115,7 @@ class Command(BaseCommand):
             },
             {
                 'user': user1,
-                'payment_date': datetime(2026, 5, 4, 16, 0),
+                'payment_date': timezone.make_aware(datetime(2026, 5, 4, 16, 0)),
                 'paid_course': None,
                 'paid_lesson': lessons[0],
                 'amount': 5000,
@@ -122,7 +123,7 @@ class Command(BaseCommand):
             },
             {
                 'user': user2,
-                'payment_date': datetime(2026, 5, 5, 11, 30),
+                'payment_date': timezone.make_aware(datetime(2026, 5, 5, 11, 30)),
                 'paid_course': None,
                 'paid_lesson': lessons[2],
                 'amount': 3000,
@@ -130,7 +131,7 @@ class Command(BaseCommand):
             },
             {
                 'user': user3,
-                'payment_date': datetime(2026, 5, 6, 13, 20),
+                'payment_date': timezone.make_aware(datetime(2026, 5, 6, 13, 20)),
                 'paid_course': courses[0],
                 'paid_lesson': None,
                 'amount': 15000,
@@ -138,7 +139,7 @@ class Command(BaseCommand):
             },
             {
                 'user': user1,
-                'payment_date': datetime(2026, 5, 7, 10, 0),
+                'payment_date': timezone.make_aware(datetime(2026, 5, 7, 10, 0)),
                 'paid_course': None,
                 'paid_lesson': lessons[4],
                 'amount': 7000,
@@ -146,7 +147,7 @@ class Command(BaseCommand):
             },
             {
                 'user': user2,
-                'payment_date': datetime(2026, 5, 8, 15, 45),
+                'payment_date': timezone.make_aware(datetime(2026, 5, 8, 15, 45)),
                 'paid_course': courses[1],
                 'paid_lesson': None,
                 'amount': 20000,
