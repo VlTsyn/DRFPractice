@@ -41,7 +41,7 @@ class User(AbstractUser):
         verbose_name_plural = "Пользователи"
 
 
-class Payments(models.Model):
+class Payment(models.Model):
     """Модель платежей"""
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='payments', verbose_name="Пользователь")

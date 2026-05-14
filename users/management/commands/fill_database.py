@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
 from materials.models import Course, Lesson
-from users.models import Payments, User
+from users.models import Payment, User
 from datetime import datetime
 
 
@@ -13,7 +13,7 @@ class Command(BaseCommand):
 
 
         self.stdout.write(self.style.WARNING('Очистка БД...'))
-        Payments.objects.all().delete()
+        Payment.objects.all().delete()
         Lesson.objects.all().delete()
         Course.objects.all().delete()
         User.objects.all().delete()
@@ -155,7 +155,7 @@ class Command(BaseCommand):
         ]
 
         for payment in payments_data:
-            Payments.objects.create(**payment)
+            Payment.objects.create(**payment)
 
         self.stdout.write(self.style.SUCCESS('Тестовые платежи созданы'))
 
@@ -164,4 +164,4 @@ class Command(BaseCommand):
         self.stdout.write(self.style.SUCCESS(f'Пользователей: {len(users)}'))
         self.stdout.write(self.style.SUCCESS(f'Курсов: {len(courses)}'))
         self.stdout.write(self.style.SUCCESS(f'Уроков: {len(lessons)}'))
-        self.stdout.write(self.style.SUCCESS(f'Платежей: {Payments.objects.count()}'))
+        self.stdout.write(self.style.SUCCESS(f'Платежей: {Payment.objects.count()}'))
