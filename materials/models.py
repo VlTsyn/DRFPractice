@@ -2,6 +2,7 @@ from django.db import models
 
 
 class Course(models.Model):
+    """Модель курса"""
 
     name = models.CharField(max_length=100, verbose_name="Название курса")
     description = models.TextField(blank=True, null=True, verbose_name="Описание")
@@ -17,6 +18,7 @@ class Course(models.Model):
 
 
 class Lesson(models.Model):
+    """Модель урока"""
 
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='lessons', verbose_name="Курс")
     name = models.CharField(max_length=100, verbose_name="Название урока")
