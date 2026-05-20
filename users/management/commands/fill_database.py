@@ -1,5 +1,6 @@
 from django.core.management.base import BaseCommand
 from django.utils import timezone
+from django.db import connection
 from materials.models import Course, Lesson
 from users.models import Payment, User
 from datetime import datetime
@@ -18,6 +19,13 @@ class Command(BaseCommand):
         Lesson.objects.all().delete()
         Course.objects.all().delete()
         User.objects.all().delete()
+
+        with connection.cursor() as cursor:
+            cursor.execute("ALTER SEQUENCE users_payments_id_seq RESTART WITH 1")
+            cursor.execute("ALTER SEQUENCE materials_lesson_id_seq RESTART WITH 1")
+            cursor.execute("ALTER SEQUENCE materials_course_id_seq RESTART WITH 1")
+            cursor.execute("ALTER SEQUENCE users_user_id_seq RESTART WITH 1")
+
         self.stdout.write(self.style.SUCCESS('БД очищена'))
 
         self.stdout.write(self.style.WARNING('Создание тестовых пользователей...'))
